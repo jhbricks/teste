@@ -1,91 +1,106 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
+
+import geopandas as gpd
+
+import leafmap
+import pandas as pd
+import numpy as np
+import folium
+import leafmap.foliumap as leafmap
+
+#import libpysal
+import geopandas
+import mapclassify
+import matplotlib.pyplot as plt
+
+########################ARQUIVOS CSV E GEOJSON
+contexto = "./dados/csv/contexto.csv"
+pop = "./dados/csv/pop_2021.csv"
+renda = "./dados/csv/renda.csv"
+riqueza = "./dados/csv/riqueza.csv"
+PR = "./dados/geojson/PR.geojson"
+NTC =  "./dados/geojson/NTC.geojson"
 
 
-st.set_page_config(layout="wide",page_title="Mapa da Desigualdade")
 
-#Remove os espaços em branco no topo
-st.markdown("""
-        <style>
-               .block-container {
-                    padding-top: 1rem;
-                    padding-bottom: 0rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
-        </style>
-        """, unsafe_allow_html=True)
 
-st.write("# Mapa da Desigualdade")
+@st.cache_data
 
-st.sidebar.success("Selecione uma das páginas acima")
+def mapagvf(area, arq, ind, scheme, k, cmap, fields, title):
+######encaminha o geojson da area
+    if area == 'PR':
+        arq_g = "./dados/geojson/PR.geojson"
+    else:
+        area = 'NTC'
+        arq_g = "./dados/geojson/NTC.geojson"
 
-st.markdown(
-    """
-    Mapa da Desigualdade é uma ferramenta para indicar a situação do local e blablablabalabal
-    **Selecione um dos temas abaixo ou abra o menu ao lado** 
-    """)
+#######MERGE geojson e csv
+    arq_csv = pd.read_csv(arq)
+    arq_geojson = gpd.read_file(arq_g)
+    data = arq_geojson.merge(arq_csv, on="Município")
 
-#####Estilo dos botões
-m = st.markdown("""
-<style>
-div.stButton > button:first-child {
-    background-color: #faecca;
-    color: black;
-    height: 3em;
-    width: 12em;
-    border-radius:10px;
-    border:3px solid #faecca;
-    font-size:20px;
-    font-weight: bold;
-    margin: auto;
-    display: block;
-}
+#######LAT E LON CENTRAIS
+    ponto_central = arq_geojson.geometry.centroid
+    lat = ponto_central.iloc[0].y
+    lon = ponto_central.iloc[0].x
+    
+    if not isinstance(data,gpd.GeoDataFrame):
+        print("O arquivo não é um GeoDataFrame")
+        exit()
 
-div.stButton > button:hover {
-	background:linear-gradient(to bottom, #faecca 5%, #f0ede6 100%);
-	background-color:##faecca;
-}
-</style>""", unsafe_allow_html=True)        
+#Lat e Lon Centrais
+    ponto_central = data.geometry.centroid
+    lat = ponto_central.iloc[0].y
+    lon = ponto_central.iloc[0].x
 
-#####Botões
-c1, c2, c3 = st.columns(3)
+    m = leafmap.Map(width=900, height=600, center=[lat, lon],
+                    draw_control=False,
+                    measure_control=False,
+                    fullscreen_control=False,
+                    attribution_control=True)
 
-with c1:
-    cont = st.button("Contextualização")
-    if cont:
-        switch_page("Contextualização")
+        # ZOOM 
+    if area == PR:
+        m.zoom_to_bounds((-26.80, -54.67, -22.44, -47.98))
+    else:
+        m.zoom_to_bounds((-25.85,-48.54,-24.96, -47.87))
+#D - EAST
+#N 
+#E - WEST
+#S
+#EAST    NORTH    WEST    SOUTH
+#(-47.98, -22.44, -54.67, -26.80)         #PR
+#(-47.87,-24.96,-48.54, -25.85)             #NTC
+  #  [[south, west], [north, east]].
+    #self.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
+    m.add_data(data=data,
+               column=ind,
+               scheme=scheme,
+               k=k,
+               cmap=cmap,
+               fields=fields,
+               legend_title=title,
+               legend_position='Bottomright',
+               layer_name=title,
+               )
 
-    seg = st.button("Segurança")
-    if seg:
-        switch_page("Segurança")
+        ########VALORES DE MX E MN DAS VARIAVEIS
+    max_value = data[ind].max()
+    min_value = data[ind].min()
+    max_municipio = data.loc[data[ind] == max_value, "Município"].iloc[0]
+    min_municipio = data.loc[data[ind] == min_value, "Município"].iloc[0]
 
-    out = st.button("Mais temas")
-    if out:
-        switch_page("Mais temas")
+        #####ADICIONAR MX E MN NO MAPA
+    folium.Marker([data.loc[data[ind] == max_value, "Y"].iloc[0],
+                   data.loc[data[ind] == max_value, "X"].iloc[0]],
+                   popup=f"Maior valor: {max_value}<br>{max_municipio}",
+                   icon=folium.Icon(color="darkpurple", icon="arrow-up"),
+                   ).add_to(m)
+    folium.Marker([data.loc[data[ind] == min_value, "Y"].iloc[0],
+                   data.loc[data[ind] == min_value, "X"].iloc[0]],
+                   popup=f"Menor valor: {min_value}<br>{min_municipio}",
+                   icon=folium.Icon(color="purple", icon="arrow-down"),
+                   ).add_to(m)
+    
+    m.to_streamlit
 
-with c2:
-    renda = st.button("Renda")
-    if renda:
-        switch_page("Renda")
-
-    amb = st.button("Meio ambiente")
-    if amb:
-        switch_page("Meio ambiente")
-
-    sob = st.button("Sobre")
-    if sob:
-        switch_page("Sobre")
-
-with c3:
-    riqz = st.button("Riqueza")
-    if riqz:
-        switch_page("Riqueza")
-
-    edu = st.button("Educação")
-    if edu:
-        switch_page("Educação")
-
-    aju = st.button("Ajuda")
-    if aju:
-        switch_page("Ajuda")
