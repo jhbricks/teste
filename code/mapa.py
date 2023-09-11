@@ -16,7 +16,7 @@ div.stButton > button:first-child {
 }
 
 div.stButton > button:hover {
-	background:linear-gradient(to bottom, #faecca 25%, #f0ede6 100%);
+	background:linear-gradient(to bottom, #faecca 5%, #f0ede6 100%);
 	background-color:##faecca;
 }
 
