@@ -10,7 +10,7 @@ def ChangeButtonColour(widget_label, font_color, background_color='transparent')
                     elements[i].style.color ='{font_color}';
                     elements[i].style.background = '{background_color}';
                     elements[i].height = 3em;
-                    elements[i].widtg = 12em
+                    elements[i].width = 12em
                 
                 }}
             }}
