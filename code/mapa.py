@@ -21,7 +21,6 @@ global_button_style = """
     elements[i].style.height = '3em';
     elements[i].style.width = '12em';
     elements[i].style.borderRadius = '10px';
-    elements[i].style.border = '3px solid;
     elements[i].style.fontSize = '20px';
     elements[i].style.fontWeight = 'bold';
     elements[i].style.margin = 'auto';
