@@ -32,10 +32,10 @@ global_button_style = """
 
 
 # Apply the global style to all buttons
-ChangeButtonStyle('first button', global_button_style)
-ChangeButtonStyle('second button', global_button_style)
-ChangeButtonStyle('third button', global_button_style)
-ChangeButtonStyle('fourth button', global_button_style)
+ChangeButtonStyle('first button', '#ce1126', global_button_style)
+ChangeButtonStyle('second button', '#ce1126', global_button_style)
+ChangeButtonStyle('third button', '#354b75',global_button_style)
+ChangeButtonStyle('fourth button','#354b75', global_button_style)
 
 # Change the style of specific buttons
 ChangeButtonStyle('second button', '#ce1126') 
