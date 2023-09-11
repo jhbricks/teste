@@ -14,6 +14,7 @@ def ChangeButtonStyle(widget_label, background_color):
                 font-weight: bold;
                 margin: auto;
                 display: block;
+                transition: background-color 0.3s ease; /* Adiciona uma transição suave */
             }}
             .custom-button:hover {{
                 background-color: rgba({background_color.r}, {background_color.g}, {background_color.b}, 0.2);
@@ -30,6 +31,9 @@ def ChangeButtonStyle(widget_label, background_color):
         """
     components.html(f"{htmlstr}", height=0, width=0)
 
+# Defina a cor de fundo que você deseja para os botões
+button_background_color = "#ce1126"  # Substitua pela cor desejada
+
 # Create the buttons
 cols = st.columns(2)
 
@@ -37,5 +41,5 @@ cols[0].button('second button', key='b2')
 cols[1].button('fourth button', key='b4')
 
 # Apply the custom style to all buttons (This will apply the style to all buttons initially)
-ChangeButtonStyle('second button', '#ce1126')  # Cor personalizada para o segundo botão
-ChangeButtonStyle('fourth button', '#354b75')  # Cor personalizada para o quarto botão
+ChangeButtonStyle('second button', button_background_color)
+ChangeButtonStyle('fourth button', button_background_color)
