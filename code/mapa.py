@@ -9,8 +9,9 @@ def ChangeButtonColour(widget_label, font_color, background_color='transparent')
                 if (elements[i].innerText == '{widget_label}') {{ 
                     elements[i].style.color ='{font_color}';
                     elements[i].style.background = '{background_color}';
-                height=3em;
-                width=12em
+                    elements[i].height = 3em;
+                    elements[i].widtg = 12em
+                
                 }}
             }}
         </script>
