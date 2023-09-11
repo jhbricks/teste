@@ -14,7 +14,7 @@ def ChangeButtonColour(widget_label, font_color, background_color='transparent')
             }}
         </script>
         """
-    components.html(f"{htmlstr}", height=3em, width=12em)
+    components.html(f"{htmlstr}", height=3, width=12)
 
 cols = st.columns(4)
 cols[0].button('first button', key='b1')
