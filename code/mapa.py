@@ -1,45 +1,37 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
-def ChangeButtonStyle(widget_label, background_color):
-    htmlstr = f"""
-        <style>
-            .custom-button {{
-                background-color: {background_color};
-                color: white;
-                height: 3em;
-                width: 12em;
-                border-radius: 10px;
-                font-size: 20px;
-                font-weight: bold;
-                margin: auto;
-                display: block;
-                transition: background-color 0.3s ease; /* Adiciona uma transição suave */
-            }}
-            .custom-button:hover {{
-                background-color: {background_color}20; /* Adiciona a transparência diretamente ao HEX */
-            }}
-        </style>
-        <script>
-            var elements = window.parent.document.querySelectorAll('button');
-            for (var i = 0; i < elements.length; ++i) {{ 
-                if (elements[i].innerText == '{widget_label}') {{ 
-                    elements[i].classList.add('custom-button');
-                }}
-            }}
-        </script>
-        """
-    components.html(f"{htmlstr}", height=0, width=0)
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #ce1126;
+    color: white;
+    height: 3em;
+    width: 12em;
+    border-radius:10px;
+    border:3px solid #ce1126;
+    font-size:20px;
+    font-weight: bold;
+    margin: auto;
+    display: block;
+}
 
-# Defina a cor de fundo que você deseja para os botões em formato HEX
-button_background_color = "#ce1126"  # Substitua pela cor desejada
+div.stButton > button:hover {
+	background:linear-gradient(to bottom, #ce1126 5%, #ff5a5a 100%);
+	background-color:#ce1126;
+}
 
-# Create the buttons
-cols = st.columns(2)
+div.stButton > button:active {
+	position:relative;
+	top:3px;
+}
 
-cols[0].button('second button', key='b2')
-cols[1].button('fourth button', key='b4')
+</style>""", unsafe_allow_html=True)
 
-# Apply the custom style to all buttons (This will apply the style to all buttons initially)
-ChangeButtonStyle('second button', button_background_color)
-ChangeButtonStyle('fourth button', button_background_color)
+b = st.button("Button 1")
+
+
+st.markdown('<p></p>', unsafe_allow_html = True)
+st.markdown('<p></p>', unsafe_allow_html = True)
+st.markdown('<p></p>', unsafe_allow_html = True)
+
+c = st.button("Button 2")
