@@ -80,9 +80,6 @@ d = st.button("teste")
 
 
 
-
-
-
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -92,12 +89,8 @@ def ChangeButtonStyle(widget_label, background_color, style):
             var elements = window.parent.document.querySelectorAll('button');
             for (var i = 0; i < elements.length; ++i) {{ 
                 if (elements[i].innerText == '{widget_label}') {{ 
-                    elements[i].style.background = '{background_color}'; {{
-                    elements[i].button:hover = ('background-color: {background_color};
-                                                 background: linear-gradient(to bottom, {background_color} 5%);{{
+                    elements[i].style.background = '{background_color}';
                     {style}
-                        }}
-                    }}
                 }}
             }}
         </script>
@@ -114,8 +107,8 @@ global_button_style = """
     elements[i].style.fontWeight = 'bold';
     elements[i].style.margin = 'auto';
     elements[i].style.display = 'block';
-    
 """
+
 
 # Create the buttons
 cols = st.columns(2)
@@ -126,3 +119,6 @@ cols[1].button('fourth button', key='b4')
 # Apply the global style to all buttons (This will apply the style to all buttons initially)
 ChangeButtonStyle('second button', '#ce1126', global_button_style)
 ChangeButtonStyle('fourth button', '#354b75', global_button_style)
+
+
+
