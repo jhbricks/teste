@@ -11,17 +11,40 @@ import matplotlib.pyplot as plt
 
 import streamlit as st
 
-import streamlit as st
-st.markdown(""" div.stButton > button:first-child {
-background-color: #00cc00;color:white;font-size:20px;height:3em;width:50%;border-radius:10px 10px 10px 10px;
-}
-“”", unsafe_allow_html=True)
 
-col1,col2,col3=st.beta_columns([0.3,1.2,0.3])
-with col1:
-    st.empty()
-with col2:
-    if st.button(“the notice you want to show”):
-        st.write(“content you want to show”)
-with col3:
-    st.empty()
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #ce1126;
+    color: white;
+    height: 3em;
+    width: 12em;
+    border-radius:10px;
+    border:3px solid #000000;
+    font-size:20px;
+    font-weight: bold;
+    margin: auto;
+    display: block;
+}
+
+div.stButton > button:hover {
+	background:linear-gradient(to bottom, #ce1126 5%, #ff5a5a 100%);
+	background-color:#ce1126;
+}
+
+div.stButton > button:active {
+	position:relative;
+	top:3px;
+}
+
+</style>""", unsafe_allow_html=True)
+
+b = st.button("Button 1")
+
+
+st.markdown('<p></p>', unsafe_allow_html = True)
+st.markdown('<p></p>', unsafe_allow_html = True)
+st.markdown('<p></p>', unsafe_allow_html = True)
+
+c = st .button("Button 2")
+
