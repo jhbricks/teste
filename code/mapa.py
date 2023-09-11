@@ -9,7 +9,7 @@ def ChangeButtonStyle(widget_label, background_color, style):
                 {style}
                 }}
             }}
-            .button:hover {{
+            .button-{widget_label}:hover {{
                 background-color: {background_color};
                 background: linear-gradient(to bottom, {background_color} 5%);
             }}
