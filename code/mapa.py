@@ -9,25 +9,10 @@ import geopandas
 import mapclassify
 import matplotlib.pyplot as plt
 
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+import streamlit as st
 
-local_css("style.css")
-
-with st.sidebar:
-    st.button("button sidebar 1")
-    st.button("button sidebar longer text")
-    st.button("button sidebar 2")
-    st.button("button sidebar 3")
-
-st.button("button page 1")
-st.button("button longer text page")
-st.button("button page 2")
-st.button("button page 3")
-#external css:
-
-section[data-testid="stSidebar"] div.stButton button {
-    background-color: brown;
-    width: 200px;
-}
+if st.button('Button 1'):
+    st.write('Button 1 was clicked')
+    if st.button('Button 2'):
+        # This will never be executed.
+        st.write('Button 2 was clicked')
