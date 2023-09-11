@@ -25,7 +25,7 @@ st.button("button page 1")
 st.button("button longer text page")
 st.button("button page 2")
 st.button("button page 3")
-external css:
+#external css:
 
 section[data-testid="stSidebar"] div.stButton button {
     background-color: brown;
