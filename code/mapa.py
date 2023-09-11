@@ -12,16 +12,24 @@ import leafmap.foliumap as leafmap
 import geopandas
 import mapclassify
 import matplotlib.pyplot as plt
+import streamlit.components.v1 
 
 ########################ARQUIVOS CSV E GEOJSON
 contexto = "./dados/csv/contexto.csv"
-pop = "./dados/csv/pop_2021.csv"
+pop = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/csv/pop_2021.csv"
 renda = "./dados/csv/renda.csv"
 riqueza = "./dados/csv/riqueza.csv"
-PR = "./dados/geojson/PR.geojson"
-NTC =  "./dados/geojson/NTC.geojson"
+PR = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson"
+NTC =  "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/NTC.geojson"
 
-
+area = 'PR'
+arq = pop
+ind = 'População'
+scheme = 'FisherJenks'
+k = 7 
+cmap = 'Reds' 
+fields = ['Município','População'] 
+title = 'teste'
 
 
 @st.cache_data
@@ -29,10 +37,10 @@ NTC =  "./dados/geojson/NTC.geojson"
 def mapagvf(area, arq, ind, scheme, k, cmap, fields, title):
 ######encaminha o geojson da area
     if area == 'PR':
-        arq_g = "./dados/geojson/PR.geojson"
+        arq_g = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson"
     else:
         area = 'NTC'
-        arq_g = "./dados/geojson/NTC.geojson"
+        arq_g = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/NTC.geojson"
 
 #######MERGE geojson e csv
     arq_csv = pd.read_csv(arq)
