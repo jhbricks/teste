@@ -38,8 +38,8 @@ ChangeButtonStyle('third button', '#354b75',global_button_style)
 ChangeButtonStyle('fourth button','#354b75', global_button_style)
 
 # Change the style of specific buttons
-ChangeButtonStyle('second button', '#ce1126') 
-ChangeButtonStyle('fourth button', '#354b75')
+#ChangeButtonStyle('second button', '#ce1126') 
+#ChangeButtonStyle('fourth button', '#354b75')
 
 # Create the buttons
 cols = st.columns(2)
