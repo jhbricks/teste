@@ -25,10 +25,8 @@ global_button_style = """
     elements[i].style.fontWeight = 'bold';
     elements[i].style.margin = 'auto';
     elements[i].style.display = 'block';
-"""
-
-global_button_hover_style = """
-    elements[i].style.background = ('background_color' 5%)
+    .button-hover:
+        elements[i].style.background: (('background_color' 5%))
 """
 
 # Create the buttons
