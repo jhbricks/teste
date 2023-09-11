@@ -74,7 +74,7 @@ m.add_data(data=data,
            layer_name='title',
            style = style_style,
            )
-
+ind = 'População'
         ########VALORES DE MX E MN DAS VARIAVEIS
 max_value = data[ind].max()
 min_value = data[ind].min()
