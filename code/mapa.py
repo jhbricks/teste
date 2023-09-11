@@ -3,12 +3,12 @@ import streamlit as st
 m = st.markdown("""
 <style>
 div.stButton > button:first-child {
-    background-color: #ce1126;
-    color: white;
+    background-color: #faecca;
+    color: black;
     height: 3em;
     width: 12em;
     border-radius:10px;
-    border:3px solid #ce1126;
+    border:3px solid #faecca;
     font-size:20px;
     font-weight: bold;
     margin: auto;
@@ -16,8 +16,8 @@ div.stButton > button:first-child {
 }
 
 div.stButton > button:hover {
-	background:linear-gradient(to bottom, #ce1126 5%, #ff5a5a 100%);
-	background-color:#ce1126;
+	background:linear-gradient(to bottom, ###f0ede6 5%, ##faecca 100%);
+	background-color:##faecca;
 }
 
 div.stButton > button:active {
