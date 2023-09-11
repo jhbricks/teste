@@ -52,11 +52,11 @@ ponto_central = data.geometry.centroid
 lat = ponto_central.iloc[0].y
 lon = ponto_central.iloc[0].x
 
- m = leafmap.Map(width=900, height=600, center=[lat, lon],
-                 draw_control=False,
-                 measure_control=False,
-                 fullscreen_control=False,
-                 attribution_control=True)
+m = leafmap.Map(width=900, height=600, center=[lat, lon],
+                draw_control=False,
+                measure_control=False,
+                fullscreen_control=False,
+                attribution_control=True)
         # ZOOM 
 #if area == PR:
 m.zoom_to_bounds((-47.98, -22.44, -54.67, -26.80))
