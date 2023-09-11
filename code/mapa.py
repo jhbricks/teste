@@ -16,7 +16,7 @@ def ChangeButtonStyle(widget_label, background_color):
                 display: block;
             }}
             .custom-button:hover {{
-                background-color: ({background_color}, 0.2);
+                background-color: rgba({background_color.r}, {background_color.g}, {background_color.b}, 0.2);
             }}
         </style>
         <script>
@@ -37,5 +37,5 @@ cols[0].button('second button', key='b2')
 cols[1].button('fourth button', key='b4')
 
 # Apply the custom style to all buttons (This will apply the style to all buttons initially)
-ChangeButtonStyle('second button', st.get_option("theme.secondaryBackgroundColor"))
-ChangeButtonStyle('fourth button', st.get_option("theme.primaryBackgroundColor"))
+ChangeButtonStyle('second button', '#ce1126')  # Cor personalizada para o segundo botão
+ChangeButtonStyle('fourth button', '#354b75')  # Cor personalizada para o quarto botão
