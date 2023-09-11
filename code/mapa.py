@@ -41,8 +41,8 @@ ChangeButtonStyle('second button', "elements[i].style.background = 'linear-gradi
 ChangeButtonStyle('fourth button', "elements[i].style.background = '#354b75'; elements[i].style.color = '#c19af5'; elements[i].style.width = '15em'; elements[i].style.height = '4em';")
 
 # Create the buttons
-cols = st.columns(4)
-cols[0].button('first button', key='b1')
-cols[1].button('second button', key='b2')
-cols[2].button('third button', key='b3')
-cols[3].button('fourth button', key='b4')
+cols = st.columns(2)
+#cols[0].button('first button', key='b1')
+cols[0].button('second button', key='b2')
+#cols[2].button('third button', key='b3')
+cols[1].button('fourth button', key='b4')
