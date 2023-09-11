@@ -47,5 +47,6 @@ st.markdown('<p></p>', unsafe_allow_html = True)
 st.markdown('<p></p>', unsafe_allow_html = True)
 st.markdown('<p></p>', unsafe_allow_html = True)
 
-c = st .button("Button 2")
+c = st.button("Button 2")
 
+d = st.button("teste")
