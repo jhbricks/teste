@@ -7,12 +7,10 @@ def ChangeButtonStyle(widget_label, background_color, style):
             var elements = window.parent.document.querySelectorAll('button');
             for (var i = 0; i < elements.length; ++i) {{ 
                 if (elements[i].innerText == '{widget_label}') {{ 
-                    elements[i].style.background = '{background_color}';
+                    elements[i].style.background = '{background_color}'; {{
                     {style}
+                    }}
                 }}
-                    button:hover {{
-                    background: '{background_color, 20%}';
-            }}
             }}
         </script>
         """
@@ -28,7 +26,7 @@ global_button_style = """
     elements[i].style.fontWeight = 'bold';
     elements[i].style.margin = 'auto';
     elements[i].style.display = 'block';
-    #elements[i].style.hover = '{background_color} 20%';
+    elements[i].style.hover = '{background_color} 20%';
 """
 
 # Create the buttons
