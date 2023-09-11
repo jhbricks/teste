@@ -72,17 +72,17 @@ style_style = {"stroke": True,           #linha da borda vai ser desenhada
                }
 
     
- m.add_data(data=data,
-            column=ind,
-            scheme=scheme,
-            k=k,
-            cmap=cmap,
-            fields=fields,
-            legend_title=title,
-            legend_position='Bottomright',
-            layer_name=title,
-            style = style_style,
-            )
+m.add_data(data=data,
+           column=ind,
+           scheme=scheme,
+           k=k,
+           cmap=cmap,
+           fields=fields,
+           legend_title=title,
+           legend_position='Bottomright',
+           layer_name=title,
+           style = style_style,
+           )
 
         ########VALORES DE MX E MN DAS VARIAVEIS
 max_value = data[ind].max()
