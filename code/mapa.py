@@ -71,7 +71,7 @@ m.add_data(data=data,
            fields=['Município','População'],
            legend_title='População residente',
            legend_position='Bottomright',
-           layer_name=title,
+           layer_name='title',
            style = style_style,
            )
 
