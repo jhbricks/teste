@@ -8,10 +8,10 @@ def ChangeButtonStyle(widget_label, background_color, style):
             for (var i = 0; i < elements.length; ++i) {{ 
                 if (elements[i].innerText == '{widget_label}') {{ 
                     elements[i].style.background = '{background_color}'; {{
-                    elements[i].button:hover = ('background-color: {background_color};
+                    #elements[i].button:hover = ('background-color: {background_color};
                                                  background: linear-gradient(to bottom, {background_color} 5%);{{
                     {style}
-                        }}
+                     #   }}
                     }}
                 }}
             }}
