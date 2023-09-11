@@ -19,7 +19,7 @@ NTC =  "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/NT
 
 @st.cache_data
 
-area = PR
+area = 'PR'
 arq = pop
 ind = 'População'
 scheme='FisherJenks'
@@ -32,10 +32,10 @@ title= 'População residente'
 def mapagvf(area, arq, ind, scheme, k, cmap, fields, title):
 ######encaminha o geojson da area
     if area == 'PR':
-        arq_g = "./dados/geojson/PR.geojson"
+        arq_g = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson"
     else:
         area = 'NTC'
-        arq_g = "./dados/geojson/NTC.geojson"
+        arq_g = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/NTC.geojson"
 
 #######MERGE geojson e csv
     arq_csv = pd.read_csv(arq)
@@ -68,6 +68,15 @@ def mapagvf(area, arq, ind, scheme, k, cmap, fields, title):
     else:
         m.zoom_to_bounds((-47.87,-24.96,-48.54, -25.85))
 
+    style_style = {"stroke": True,           #linha da borda vai ser desenhada
+                   "color": "#000000",       #cor da linha (preto)
+                   "weight": 2,              #espessura 2 px
+                  #"opacity": 0,             #opacidade da borda (1 = totalmente opaca)
+                   "fillOpacity": 1,       #opacidade do preenchimento (0.1 = 10% opaca)
+                   "clickable": True,
+                   }
+
+    
     m.add_data(data=data,
                column=ind,
                scheme=scheme,
@@ -77,6 +86,7 @@ def mapagvf(area, arq, ind, scheme, k, cmap, fields, title):
                legend_title=title,
                legend_position='Bottomright',
                layer_name=title,
+               style = style_style,
                )
 
         ########VALORES DE MX E MN DAS VARIAVEIS
