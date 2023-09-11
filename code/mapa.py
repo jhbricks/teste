@@ -9,14 +9,14 @@ def ChangeButtonColour(widget_label, font_color, background_color='transparent')
                 if (elements[i].innerText == '{widget_label}') {{ 
                     elements[i].style.color ='{font_color}';
                     elements[i].style.background = '{background_color}';
-                    elements[i].height = 3em;
-                    elements[i].width = 12em
+                    elements[i].height = '12em';
+                    elements[i].width = '12em'
                 
                 }}
             }}
         </script>
         """
-    components.html(f"{htmlstr}", height=3, width=12)
+    components.html(f"{htmlstr}", height=0, width=0)
 
 cols = st.columns(4)
 cols[0].button('first button', key='b1')
