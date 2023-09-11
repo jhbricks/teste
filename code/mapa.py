@@ -17,14 +17,7 @@ pop = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/csv/pop_202
 PR = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson"
 NTC =  "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/NTC.geojson"
 
-area = 'PR'
-arq = pop
-ind = 'População'
-scheme='FisherJenks'
-k=5
-cmap='YlOrBr'
-fields=['Município','População']
-title= 'População residente'
+
 ######encaminha o geojson da area
 #    if area == 'PR':
 #        arq_g = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson"
@@ -34,8 +27,8 @@ title= 'População residente'
 
 #######MERGE geojson e csv
     
-arq_csv = pd.read_csv(arq)
-arq_geojson = gpd.read_file(PR)
+arq_csv = pd.read_csv("https://raw.githubusercontent.com/jhbricks/mapades/main/dados/csv/pop_2021.csv")
+arq_geojson = gpd.read_file("https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson")
 data = arq_geojson.merge(arq_csv, on="Município")
 
 #######LAT E LON CENTRAIS
@@ -70,15 +63,13 @@ style_style = {"stroke": True,           #linha da borda vai ser desenhada
                "fillOpacity": 1,       #opacidade do preenchimento (0.1 = 10% opaca)
                "clickable": True,
                }
-
-    
 m.add_data(data=data,
-           column=ind,
-           scheme=scheme,
-           k=k,
-           cmap=cmap,
-           fields=fields,
-           legend_title=title,
+           column='População',
+           scheme='FisherJenks',
+           k=7,
+           cmap='YlOrBr',
+           fields=['Município','População'],
+           legend_title='População residente',
            legend_position='Bottomright',
            layer_name=title,
            style = style_style,
