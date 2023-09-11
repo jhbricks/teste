@@ -17,8 +17,6 @@ pop = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/csv/pop_202
 PR = "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/PR.geojson"
 NTC =  "https://raw.githubusercontent.com/jhbricks/mapades/main/dados/geojson/NTC.geojson"
 
-@st.cache_data
-
 area = 'PR'
 arq = pop
 ind = 'População'
@@ -28,6 +26,7 @@ cmap='YlOrBr'
 fields=['Município','População']
 title= 'População residente'
 
+@st.cache_data
 
 def mapagvf(area, arq, ind, scheme, k, cmap, fields, title):
 ######encaminha o geojson da area
