@@ -35,7 +35,7 @@ title= 'População residente'
 #######MERGE geojson e csv
     
 arq_csv = pd.read_csv(arq)
-arq_geojson = gpd.read_file(arq_g)
+arq_geojson = gpd.read_file(PR)
 data = arq_geojson.merge(arq_csv, on="Município")
 
 #######LAT E LON CENTRAIS
