@@ -11,7 +11,7 @@ def ChangeButtonStyle(widget_label, background_color, style):
                     {style}
                 }}
                     button:hover {{
-                    background: '{background_color} 20%';
+                    background: '{background_color, 20%}';
             }}
             }}
         </script>
@@ -28,6 +28,7 @@ global_button_style = """
     elements[i].style.fontWeight = 'bold';
     elements[i].style.margin = 'auto';
     elements[i].style.display = 'block';
+    #elements[i].style.hover = '{background_color} 20%';
 """
 
 # Create the buttons
