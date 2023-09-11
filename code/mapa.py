@@ -1,16 +1,15 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-import streamlit as st
-import streamlit.components.v1 as components
-
-def ChangeButtonStyle(widget_label, style):
+def ChangeButtonStyle(widget_label, background_color,style):
     htmlstr = f"""
         <script>
             var elements = window.parent.document.querySelectorAll('button');
             for (var i = 0; i < elements.length; ++i) {{ 
                 if (elements[i].innerText == '{widget_label}') {{ 
+                    elements[i].style.background = '{background_color}'{{
                     {style}
+                    }}
                 }}
             }}
         </script>
@@ -30,6 +29,8 @@ global_button_style = """
     elements[i].style.display = 'block';
 """
 
+
+
 # Apply the global style to all buttons
 ChangeButtonStyle('first button', global_button_style)
 ChangeButtonStyle('second button', global_button_style)
@@ -37,8 +38,8 @@ ChangeButtonStyle('third button', global_button_style)
 ChangeButtonStyle('fourth button', global_button_style)
 
 # Change the style of specific buttons
-ChangeButtonStyle('second button', "elements[i].style.background = 'linear-gradient(to bottom, #ce1126 5%, #ff5a5a 100%)'; elements[i].style.backgroundColor = '#ce1126';")
-ChangeButtonStyle('fourth button', "elements[i].style.background = '#354b75'; elements[i].style.color = '#c19af5'; elements[i].style.width = '15em'; elements[i].style.height = '4em';")
+ChangeButtonStyle('second button', '#ce1126') 
+ChangeButtonStyle('fourth button', '#354b75')
 
 # Create the buttons
 cols = st.columns(2)
