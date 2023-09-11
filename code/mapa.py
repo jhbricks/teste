@@ -3,13 +3,20 @@ import streamlit.components.v1 as components
 
 def ChangeButtonStyle(widget_label, background_color, style):
     htmlstr = f"""
+        <style>
+            .button-{widget_label} {{
+                background: {background_color};
+                {style}
+            }}
+            .button-{widget_label}:hover {{
+                background: linear-gradient(to bottom, {background_color} 5%, rgba(206, 17, 38, 0.2) 100%);
+            }}
+        </style>
         <script>
             var elements = window.parent.document.querySelectorAll('button');
             for (var i = 0; i < elements.length; ++i) {{ 
                 if (elements[i].innerText == '{widget_label}') {{ 
-                    elements[i].style.background = '{background_color}'; {{
-                    {style}
-                    }}
+                    elements[i].classList.add('button-{widget_label}');
                 }}
             }}
         </script>
@@ -18,15 +25,15 @@ def ChangeButtonStyle(widget_label, background_color, style):
 
 # Define the style you want to apply to all buttons
 global_button_style = """
-    elements[i].style.color = 'white';
-    elements[i].style.height = '3em';
-    elements[i].style.width = '12em';
-    elements[i].style.borderRadius = '10px';
-    elements[i].style.fontSize = '20px';
-    elements[i].style.fontWeight = 'bold';
-    elements[i].style.margin = 'auto';
-    elements[i].style.display = 'block';
-    elements[i].style.hover = '{background_color} 20%';
+    color: white;
+    height: 3em;
+    width: 12em;
+    border-radius: 10px;
+    border: 3px solid #ce1126;
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto;
+    display: block;
 """
 
 # Create the buttons
