@@ -5,11 +5,13 @@ def ChangeButtonStyle(widget_label, background_color, style):
     htmlstr = f"""
         <style>
             .button-{widget_label} {{
-                background: {background_color};
+                background: {background_color};{{
                 {style}
+                }}
             }}
             .button:hover {{
-                background-color: ({background_color} 5%);
+                background-color: {background_color};
+                background: linear-gradient(to bottom, {background_color} 5%);
             }}
         </style>
         <script>
