@@ -17,7 +17,7 @@ def ChangeButtonStyle(widget_label, background_color):
                 transition: background-color 0.3s ease; /* Adiciona uma transição suave */
             }}
             .custom-button:hover {{
-                background-color: rgba({background_color.r}, {background_color.g}, {background_color.b}, 0.2);
+                background-color: {background_color}20; /* Adiciona a transparência diretamente ao HEX */
             }}
         </style>
         <script>
@@ -31,7 +31,7 @@ def ChangeButtonStyle(widget_label, background_color):
         """
     components.html(f"{htmlstr}", height=0, width=0)
 
-# Defina a cor de fundo que você deseja para os botões
+# Defina a cor de fundo que você deseja para os botões em formato HEX
 button_background_color = "#ce1126"  # Substitua pela cor desejada
 
 # Create the buttons
