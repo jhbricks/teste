@@ -27,11 +27,11 @@ div.stButton > button:active {
 
 </style>""", unsafe_allow_html=True)
 
-b = st.button("Button 1")
+st.button("Button 1")
 
 
 st.markdown('<p></p>', unsafe_allow_html = True)
 st.markdown('<p></p>', unsafe_allow_html = True)
 st.markdown('<p></p>', unsafe_allow_html = True)
 
-c = st.button("Button 2")
+st.button("Button 2")
