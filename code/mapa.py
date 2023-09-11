@@ -10,8 +10,8 @@ def ChangeButtonStyle(widget_label, background_color, style):
                     elements[i].style.background = '{background_color}';
                     {style}
                 }}
-                button-{widget_label}:hover {{
-                background: '{background_color} 20%';
+                    button:hover {{
+                    background: '{background_color} 20%';
             }}
             }}
         </script>
