@@ -61,7 +61,10 @@ m = leafmap.Map(width=900, height=600,
 style = {"stroke": True,"color": "#000000","weight": 2,"opacity": 1}
 hover_style = {"fillOpacity": 0.7}
 
-m.add_data(data,column='População',scheme='FisherJenks',k=5,cmap='Reds',fields=['Município','População'], zoom_to_layer=True,style=style,hover_style=hover_style)
+m.add_data(data,column='População',scheme='FisherJenks',k=5,cmap='Reds',fields=['Município','População'],
+            zoom_to_layer=True,
+            style={"stroke": True,"color": "#000000","weight": 2,"opacity": 1},
+            hover_style=hover_style)
  
 m.to_streamlit()
         # ZOOM 
