@@ -63,7 +63,7 @@ hover_style = {"fillOpacity": 0.7}
 
 m.add_data(data,column='População',scheme='FisherJenks',k=5,cmap='Reds',fields=['Município','População'], zoom_to_layer=True,style=style,hover_style=hover_style)
  
- m.to_streamlit()
+m.to_streamlit()
         # ZOOM 
 #if area == PR:
 #    m.zoom_to_bounds((-26.80, -54.67, -22.44, -47.98))
