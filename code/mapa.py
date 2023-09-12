@@ -58,7 +58,7 @@ m = leafmap.Map(width=900, height=600,
                 fullscreen_control=False,
                 attribution_control=True)
 
-style = {"stroke": True,"color": "#000000","weight": 2,"opacity": 1}
+#style = {"stroke": True,"color": "#000000","weight": 2,"opacity": 1}
 hover_style = {"fillOpacity": 0.7}
 
 m.add_data(data,column='População',scheme='FisherJenks',k=5,cmap='Reds',fields=['Município','População'],
