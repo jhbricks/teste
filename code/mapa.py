@@ -63,7 +63,7 @@ hover_style = {"fillOpacity": 0.7}
 
 m.add_data(data,column='População',scheme='FisherJenks',k=7,cmap='Reds',fields=['Município','População'],
             zoom_to_layer=True,
-            style={"stroke": True,"color": "#000000","weight": 2,"opacity": 1},
+            style_fuction={"stroke": True,"color": "#000000","weight": 2,"opacity": 1},
             hover_style=hover_style)
  
 m.to_streamlit()
