@@ -83,3 +83,18 @@ m.to_streamlit()
     #self.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
 
 
+c = leafmap.Map(width=950, height=600,
+                draw_control=False,
+                measure_control=False,
+                fullscreen_control=False,
+                attribution_control=True)
+
+style = {"stroke": True,"color": "#f70202","weight": 2,"opacity": 1}
+hover_style = {"fillOpacity": 0.7}
+
+c.add_data(data,column='População',scheme='FisherJenks',k=7,cmap='Reds',fields=['Município','População'],
+            zoom_to_layer=True,
+            style_callback= style,
+            hover_style=hover_style)
+ 
+c.to_streamlit()
